@@ -8,17 +8,20 @@ def game_start():
     game_words = game_words.read().splitlines()
     cur_record = 0
     while lives != 0:
+        word_cipher = ""
         word_choose = random.choice(game_words)
         print(word_choose)
-        word_cipher = "□□□□□"
+        for i in range(len(word_choose)):
+            word_cipher += "□"
         while lives != 0:
             word_list = list(word_choose)
+            print(word_list)
             print(f"Загаданное слово: {word_cipher}\n")
             ans_let = input("Введите букву или слово: ")
             ans_pos = word_choose.find(ans_let)
             if ans_pos != -1 and len(ans_let) == 1:
                 for i in range(len(word_choose)):
-                    if word_list.pop == ans_let:
+                    if word_choose[i] == ans_let:
                         word_cipher = word_cipher[:ans_pos] + ans_let + word_cipher[ans_pos + 1:]
                 print(f"Ваше количество жизней: {lives}\n")
             elif ans_let == word_choose:
