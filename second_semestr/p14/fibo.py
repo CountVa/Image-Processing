@@ -1,5 +1,5 @@
 from functools import wraps
-
+import time
 def cache(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -15,3 +15,7 @@ def fib(num):
     if num < 2:
         return num
     return fib(num - 1) + fib(num - 2)
+
+start = time.perf_counter()
+fib(20)
+print('Время выполнения:', time.perf_counter() - start)
